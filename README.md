@@ -6,6 +6,7 @@ Always included via App-Arena [Analytics.js](https://github.com/apparena/analyti
 
 ### Scripts
 Run `yarn build` to build the Client-Sdk.
+Run `yarn build:shim` to build the the shim.
 
 ### Folder / File structure
 

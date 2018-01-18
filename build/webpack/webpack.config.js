@@ -177,7 +177,7 @@ if (config.env.production) {
 } else {
     webpackConfig.plugins.push(
         new CleanPlugin([config.paths.dist], {
-            exclude: ['shim.js'],
+            exclude: ['shim.js', 'shim.min.js'],
             root: config.paths.root,
             verbose: false
         })

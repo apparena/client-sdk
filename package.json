@@ -7,7 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --progress --config build/webpack/webpack.config.js",
     "build:watch": "webpack -w --progress --config build/webpack/webpack.config.js",
-    "build:prod": "NODE_ENV=production webpack --progress --config build/webpack/webpack.config.js"
+    "build:prod": "NODE_ENV=production webpack --progress --config build/webpack/webpack.config.js",
+    "build:shim": "webpack --progress --config build/webpack/webpack.config.web.js",
+    "build:shim:watch": "webpack -w --progress --config build/webpack/webpack.config.web.js",
+    "build:shim:prod": "NODE_ENV=production webpack --progress --config build/webpack/webpack.config.web.js"
   },
   "repository": {
     "type": "git",
