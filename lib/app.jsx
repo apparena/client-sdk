@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactComponent from 'apparena-patterns-react/_patterns/react-utils/component';
-import WidgetContainer from './widgetContainer';
+import WidgetContainer from './widgetFrameContainer';
+import axios from 'axios';
 
 export default class App extends ReactComponent {
     static propTypes = {
@@ -16,45 +17,56 @@ export default class App extends ReactComponent {
     }
 
     componentDidMount() {
-        this.setState({
-            widgets: [
-                {
-                    src: 'http://widget/main.js',
-                    position: 'bottom left',
-                    timeout: 2000
+        if (window.parent.aaDevWidgets) {
+            this.setState({
+                widgets: window.parent.aaDevWidgets
+            });
+        } else {
+            if (window.analytics) {
+                const {companyId, channelId} = window.analytics.options;
+                const {context} = window.analytics.normalize({});
+                const {page} = context;
+                console.log(page);
+                if (companyId && channelId) {
+                    axios.get(`https://v25-stage.app-arena.com/companies/${companyId}/channels/${channelId}/widgets`)
+                        .then((res) => {
+                            this.setState({
+                                widgets: res
+                            });
+                        })
+                        .catch((err) => {
+
+                        });
                 }
-                // {
-                //     src: 'http://widget/main.js',
-                //     position: 'bottom right',
-                //     timeout: 4000
-                // },
-                // {
-                //     src: 'http://widget/main.js',
-                //     position: 'top right',
-                //     timeout: 6000
-                // },
-                // {
-                //     src: 'http://widget/main.js',
-                //     position: 'top left',
-                //     timeout: 8000
-                // },
-                // {
-                //     src: 'http://widget/main.js',
-                //     position: 'center',
-                //     timeout: 10000
-                // }
-            ]
+            }
+        }
+    }
+
+    /**
+     * Check if the widget should be shown
+     * @param rules
+     * @returns {boolean}
+     */
+    checkWidgetRules(rules) {
+        const result = rules.map((rule) => {
+            return true;
         });
+        return !result.includes(false);
     }
 
     renderWidget(widget, index) {
-        return (
-            <WidgetContainer
-                index={index + 1}
-                key={index}
-                {...widget}
-            />
-        );
+        const {appId, source, rules, settings, ...rest} = widget;
+        if (this.checkWidgetRules(rules)) {
+            return (
+                <WidgetContainer
+                    id={appId}
+                    key={index}
+                    source={source}
+                    {...settings}
+                    {...rest}
+                />
+            );
+        }
     }
 
     /**

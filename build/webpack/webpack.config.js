@@ -14,7 +14,7 @@ const CopyGlobsPlugin = require('./webpack.plugin.copyglobs');
 const mergeWithConcat = require('./util/mergeWithConcat');
 const config = require('./config');
 
-const assetsFilenames = (config.enabled.cacheBusting) ? config.cacheBusting : '[name]';
+const assetsFilenames = (config.enabled.cacheBusting) ? '[name]' : '[name].dev';
 
 const jsRule = {
     test: /\.(js|jsx)$/,
@@ -171,29 +171,12 @@ if (config.env.production) {
         /^console.log$/,
         './bundle/debug-noop'
     ));
-    const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
-    webpackConfig.recordsPath = './.webpack-cache/client-records.json';
-    webpackConfig.plugins.unshift(new HardSourceWebpackPlugin({cacheDirectory: './.webpack-cache/client'}));
 } else {
     webpackConfig.plugins.push(
         new CleanPlugin([config.paths.dist], {
             exclude: ['shim.js', 'shim.min.js'],
             root: config.paths.root,
             verbose: false
-        })
-    );
-}
-
-if (config.enabled.cacheBusting) {
-    const WebpackAssetsManifest = require('webpack-assets-manifest');
-
-    webpackConfig.plugins.push(
-        new WebpackAssetsManifest({
-            output: 'assets.json',
-            space: 2,
-            writeToDisk: false,
-            assets: config.manifest,
-            replacer: require('./util/assetManifestsFormatter')
         })
     );
 }

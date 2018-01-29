@@ -60,7 +60,9 @@
   },
   "dependencies": {
     "apparena-patterns-react": "^1.2.25",
+    "axios": "^0.17.1",
     "classnames": "^2.2.5",
+    "generator-apparena-react-component": "^1.2.3",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0"
