@@ -12,12 +12,13 @@ Run `yarn build:shim` to build the the shim.
 
 Explanation of the folders in `/lib`
 
-  Folder/File  | Description
---- | ---
- shim   | This File will be loaded by the [analytics.js-integration-apparena](https://github.com/apparena/analytics.js-integration-apparena#readme) and creates an iframe and loads the js-client-sdk (frame.js) 
- index.jsx   | Startpoint of the client-sdk, creates and renders the react-app.
- widgetContainer   | Render an Iframe for all Widgets and load async the js-file of the widget to show the widget.
- 
+| Folder/File          | Description                                                                                                                                                                                            |
+|:---------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| shim                 | This File will be loaded by the [analytics.js-integration-apparena](https://github.com/apparena/analytics.js-integration-apparena#readme) and creates an iframe and loads the js-client-sdk (frame.js) |
+| index.jsx            | Startpoint of the client-sdk, creates and renders the react-app. -> Creates div with class="apparena-container"                                                                                        |
+| widgetFrameContainer | Render an div container for the widget iframe                                                                                                                                                          |
+| widgetFrame          | Render an iframe and load async the widget js-file to show the widget.                                                                                                                                 |
+
 ### Deployment
  
 At the moment there is no automatic deployment defined. `yarn build` will create the `frame.js` file, which needs to be uploaded to S3 Bucket `aa-manager-20/cdn/client-sdk/1.0/frame.js`.

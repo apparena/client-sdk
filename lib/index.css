@@ -200,58 +200,54 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-#apparena-container .apparena-widget-frame {
+#apparena-container .apparena-widget-frame-container {
     z-index: 2147483000 !important;
     position: fixed !important;
-    height: calc(100% - 20px - 20px);
-    width: 370px !important;
-    min-height: 250px !important;
-    max-height: 330px !important;
     overflow: hidden !important;
     transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-#apparena-container .apparena-widget-frame.center-before {
+#apparena-container .apparena-widget-frame-container.center-before {
     opacity: 0;
     left: calc(50% - calc(370px / 2));
     top: calc(50% - calc(330px / 2));
 }
 
-#apparena-container .apparena-widget-frame.left-before {
+#apparena-container .apparena-widget-frame-container.left-before {
     left: -500px;
     right: auto;
 }
 
-#apparena-container .apparena-widget-frame.right-before {
+#apparena-container .apparena-widget-frame-container.right-before {
     right: -500px;
     left: auto;
 }
 
-#apparena-container .apparena-widget-frame.top {
+#apparena-container .apparena-widget-frame-container.top {
     top: 20px;
     bottom: auto;
 }
 
-#apparena-container .apparena-widget-frame.center {
+#apparena-container .apparena-widget-frame-container.center {
     opacity: 1;
 }
 
-#apparena-container .apparena-widget-frame.left {
+#apparena-container .apparena-widget-frame-container.left {
     left: 20px;
     right: auto;
 }
 
-#apparena-container .apparena-widget-frame.right {
+#apparena-container .apparena-widget-frame-container.right {
     right: 20px;
     left: auto;
 }
 
-#apparena-container .apparena-widget-frame.bottom {
+#apparena-container .apparena-widget-frame-container.bottom {
     bottom: 20px;
     top: auto;
 }
 
-#apparena-container .apparena-widget-frame > iframe {
+#apparena-container .apparena-widget-frame-container > iframe {
     width: 100%!important;
     height: 100%!important;
 }

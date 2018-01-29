@@ -53,7 +53,7 @@ let webpackConfig = {
             }
         }),
         new CleanPlugin([config.paths.dist], {
-            exclude: ['frame.js', 'frame.js.map'],
+            exclude: ['frame.js', 'frame.js.map', 'frame.dev.js', 'frame.dev.js.map'],
             root: config.paths.root,
             verbose: false
         })
