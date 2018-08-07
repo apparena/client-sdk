@@ -1,4 +1,4 @@
-App-Arena.com Client JS SDK
+App-Arena™ Platform Client JS SDK
 =============================
 
 App-Arena JS-Client SDK which dynamically loads and display widgets of the customer on all pages where it is included.
